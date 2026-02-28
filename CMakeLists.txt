@@ -285,6 +285,12 @@ target_compile_definitions(gridsynth PRIVATE PROJECT_ROOT_DIR="${CMAKE_CURRENT_S
 target_compile_options(gridsynth PRIVATE ${COMMON_COMPILE_OPTIONS})
 list(APPEND _NWQEC_CLI_TARGETS gridsynth)
 
+add_executable(gd tools/gd.cpp)
+target_link_libraries(gd PRIVATE nwqec_gridsynth)
+target_compile_definitions(gd PRIVATE PROJECT_ROOT_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+target_compile_options(gd PRIVATE ${COMMON_COMPILE_OPTIONS})
+list(APPEND _NWQEC_CLI_TARGETS gd)
+
 # =============================================================================
 # Build type specific tweaks
 # =============================================================================
@@ -323,7 +329,7 @@ message(STATUS "Configured executable: gridsynth (with GMP/MPFR)")
 # Install rules (CLI binaries and headers)
 # =============================================================================
 include(GNUInstallDirs)
-install(TARGETS nwqec-cli gridsynth
+install(TARGETS nwqec-cli gridsynth gd
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 # Install interface libraries and export targets
