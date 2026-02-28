@@ -3,7 +3,7 @@ import sys
 import os
 import subprocess
 
-GD_PATH = "/Users/chenxu/Documents/MyGit/nwqec/build/gd"
+GD_PATH = "../build/gd"
 
 def random_angles(size:int = 10, fn:str = 'output.txt', seed:int=42):
     '''generate random angles, save them into a txt file'''
