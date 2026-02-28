@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
                 NWQEC::DEFAULT_DIOPHANTINE_TIMEOUT_MS,
                 NWQEC::DEFAULT_FACTORING_TIMEOUT_MS,
                 false,
-                true
+                false
             );
 
             const GateCounts c = count_gates(gates);
