@@ -1,0 +1,1130 @@
+[
+  {
+    "target_n_buses": 2,
+    "num_active_variables": 6,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 699300,
+      "1q": 699300,
+      "2q_easy": 84306,
+      "2q_hard": 8400,
+      "2q": 92706,
+      "other": 0,
+      "easy_total": 84306,
+      "hard_total": 707700,
+      "total": 792006,
+      "t_count": 707700
+    },
+    "hard_gates_total": 707700,
+    "easy_gates_total": 84306
+  },
+  {
+    "target_n_buses": 5,
+    "num_active_variables": 14,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 4261950,
+      "1q": 4261950,
+      "2q_easy": 520984,
+      "2q_hard": 19600,
+      "2q": 540584,
+      "other": 0,
+      "easy_total": 520984,
+      "hard_total": 4281550,
+      "total": 4802534,
+      "t_count": 4281550
+    },
+    "hard_gates_total": 4281550,
+    "easy_gates_total": 520984,
+    "skip_after": 5
+  },
+  {
+    "target_n_buses": 12,
+    "num_active_variables": 34,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 20095200,
+      "1q": 20095200,
+      "2q_easy": 2454584,
+      "2q_hard": 47600,
+      "2q": 2502184,
+      "other": 0,
+      "easy_total": 2454584,
+      "hard_total": 20142800,
+      "total": 22597384,
+      "t_count": 20142800
+    },
+    "hard_gates_total": 20142800,
+    "easy_gates_total": 2454584,
+    "skip_after": 12
+  },
+  {
+    "target_n_buses": 15,
+    "num_active_variables": 40,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 23710500,
+      "1q": 23710500,
+      "2q_easy": 2888270,
+      "2q_hard": 56000,
+      "2q": 2944270,
+      "other": 0,
+      "easy_total": 2888270,
+      "hard_total": 23766500,
+      "total": 26654770,
+      "t_count": 23766500
+    },
+    "hard_gates_total": 23766500,
+    "easy_gates_total": 2888270,
+    "skip_after": 15
+  },
+  {
+    "target_n_buses": 22,
+    "num_active_variables": 66,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 40855800,
+      "1q": 40855800,
+      "2q_easy": 4982736,
+      "2q_hard": 92400,
+      "2q": 5075136,
+      "other": 0,
+      "easy_total": 4982736,
+      "hard_total": 40948200,
+      "total": 45930936,
+      "t_count": 40948200
+    },
+    "hard_gates_total": 40948200,
+    "easy_gates_total": 4982736,
+    "skip_after": 22
+  },
+  {
+    "target_n_buses": 32,
+    "num_active_variables": 104,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 68474200,
+      "1q": 68474200,
+      "2q_easy": 8361514,
+      "2q_hard": 145600,
+      "2q": 8507114,
+      "other": 0,
+      "easy_total": 8361514,
+      "hard_total": 68619800,
+      "total": 76981314,
+      "t_count": 68619800
+    },
+    "hard_gates_total": 68619800,
+    "easy_gates_total": 8361514,
+    "skip_after": 32
+  },
+  {
+    "target_n_buses": 34,
+    "num_active_variables": 108,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 69777400,
+      "1q": 69777400,
+      "2q_easy": 8514828,
+      "2q_hard": 151200,
+      "2q": 8666028,
+      "other": 0,
+      "easy_total": 8514828,
+      "hard_total": 69928600,
+      "total": 78443428,
+      "t_count": 69928600
+    },
+    "hard_gates_total": 69928600,
+    "easy_gates_total": 8514828,
+    "skip_after": 34
+  },
+  {
+    "target_n_buses": 36,
+    "num_active_variables": 112,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 73384600,
+      "1q": 73384600,
+      "2q_easy": 8957942,
+      "2q_hard": 156800,
+      "2q": 9114742,
+      "other": 0,
+      "easy_total": 8957942,
+      "hard_total": 73541400,
+      "total": 82499342,
+      "t_count": 73541400
+    },
+    "hard_gates_total": 73541400,
+    "easy_gates_total": 8957942,
+    "skip_after": 36
+  },
+  {
+    "target_n_buses": 40,
+    "num_active_variables": 124,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 78648700,
+      "1q": 78648700,
+      "2q_easy": 9595274,
+      "2q_hard": 173600,
+      "2q": 9768874,
+      "other": 0,
+      "easy_total": 9595274,
+      "hard_total": 78822300,
+      "total": 88417574,
+      "t_count": 78822300
+    },
+    "hard_gates_total": 78822300,
+    "easy_gates_total": 9595274,
+    "skip_after": 40
+  },
+  {
+    "target_n_buses": 45,
+    "num_active_variables": 142,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 87037350,
+      "1q": 87037350,
+      "2q_easy": 10617332,
+      "2q_hard": 198800,
+      "2q": 10816132,
+      "other": 0,
+      "easy_total": 10617332,
+      "hard_total": 87236150,
+      "total": 97853482,
+      "t_count": 87236150
+    },
+    "hard_gates_total": 87236150,
+    "easy_gates_total": 10617332,
+    "skip_after": 45
+  },
+  {
+    "target_n_buses": 49,
+    "num_active_variables": 150,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 91119750,
+      "1q": 91119750,
+      "2q_easy": 11105040,
+      "2q_hard": 210000,
+      "2q": 11315040,
+      "other": 0,
+      "easy_total": 11105040,
+      "hard_total": 91329750,
+      "total": 102434790,
+      "t_count": 91329750
+    },
+    "hard_gates_total": 91329750,
+    "easy_gates_total": 11105040,
+    "skip_after": 49
+  },
+  {
+    "target_n_buses": 53,
+    "num_active_variables": 158,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 97227150,
+      "1q": 97227150,
+      "2q_easy": 11855458,
+      "2q_hard": 221200,
+      "2q": 12076658,
+      "other": 0,
+      "easy_total": 11855458,
+      "hard_total": 97448350,
+      "total": 109303808,
+      "t_count": 97448350
+    },
+    "hard_gates_total": 97448350,
+    "easy_gates_total": 11855458,
+    "skip_after": 53
+  },
+  {
+    "target_n_buses": 55,
+    "num_active_variables": 162,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 100006350,
+      "1q": 100006350,
+      "2q_easy": 12189852,
+      "2q_hard": 226800,
+      "2q": 12416652,
+      "other": 0,
+      "easy_total": 12189852,
+      "hard_total": 100233150,
+      "total": 112423002,
+      "t_count": 100233150
+    },
+    "hard_gates_total": 100233150,
+    "easy_gates_total": 12189852,
+    "skip_after": 55
+  },
+  {
+    "target_n_buses": 60,
+    "num_active_variables": 178,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 107804400,
+      "1q": 107804400,
+      "2q_easy": 13137098,
+      "2q_hard": 249200,
+      "2q": 13386298,
+      "other": 0,
+      "easy_total": 13137098,
+      "hard_total": 108053600,
+      "total": 121190698,
+      "t_count": 108053600
+    },
+    "hard_gates_total": 108053600,
+    "easy_gates_total": 13137098,
+    "skip_after": 60
+  },
+  {
+    "target_n_buses": 63,
+    "num_active_variables": 184,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 110312700,
+      "1q": 110312700,
+      "2q_easy": 13434974,
+      "2q_hard": 257600,
+      "2q": 13692574,
+      "other": 0,
+      "easy_total": 13434974,
+      "hard_total": 110570300,
+      "total": 124005274,
+      "t_count": 110570300
+    },
+    "hard_gates_total": 110570300,
+    "easy_gates_total": 13434974,
+    "skip_after": 63
+  },
+  {
+    "target_n_buses": 66,
+    "num_active_variables": 190,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 112821000,
+      "1q": 112821000,
+      "2q_easy": 13732850,
+      "2q_hard": 266000,
+      "2q": 13998850,
+      "other": 0,
+      "easy_total": 13732850,
+      "hard_total": 113087000,
+      "total": 126819850,
+      "t_count": 113087000
+    },
+    "hard_gates_total": 113087000,
+    "easy_gates_total": 13732850,
+    "skip_after": 66
+  },
+  {
+    "target_n_buses": 70,
+    "num_active_variables": 198,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 119016150,
+      "1q": 119016150,
+      "2q_easy": 14511078,
+      "2q_hard": 277200,
+      "2q": 14788278,
+      "other": 0,
+      "easy_total": 14511078,
+      "hard_total": 119293350,
+      "total": 133804428,
+      "t_count": 119293350
+    },
+    "hard_gates_total": 119293350,
+    "easy_gates_total": 14511078,
+    "skip_after": 70
+  },
+  {
+    "target_n_buses": 71,
+    "num_active_variables": 200,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 119852250,
+      "1q": 119852250,
+      "2q_easy": 14610370,
+      "2q_hard": 280000,
+      "2q": 14890370,
+      "other": 0,
+      "easy_total": 14610370,
+      "hard_total": 120132250,
+      "total": 134742620,
+      "t_count": 120132250
+    },
+    "hard_gates_total": 120132250,
+    "easy_gates_total": 14610370
+  },
+  {
+    "target_n_buses": 74,
+    "num_active_variables": 206,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 122360550,
+      "1q": 122360550,
+      "2q_easy": 14908246,
+      "2q_hard": 288400,
+      "2q": 15196646,
+      "other": 0,
+      "easy_total": 14908246,
+      "hard_total": 122648950,
+      "total": 137557196,
+      "t_count": 122648950
+    },
+    "hard_gates_total": 122648950,
+    "easy_gates_total": 14908246,
+    "skip_after": 74
+  },
+  {
+    "target_n_buses": 84,
+    "num_active_variables": 246,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 149548300,
+      "1q": 149548300,
+      "2q_easy": 18233816,
+      "2q_hard": 344400,
+      "2q": 18578216,
+      "other": 0,
+      "easy_total": 18233816,
+      "hard_total": 149892700,
+      "total": 168126516,
+      "t_count": 149892700
+    },
+    "hard_gates_total": 149892700,
+    "easy_gates_total": 18233816,
+    "skip_after": 84
+  },
+  {
+    "target_n_buses": 93,
+    "num_active_variables": 276,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 172240550,
+      "1q": 172240550,
+      "2q_easy": 21006536,
+      "2q_hard": 386400,
+      "2q": 21392936,
+      "other": 0,
+      "easy_total": 21006536,
+      "hard_total": 172626950,
+      "total": 193633486,
+      "t_count": 172626950
+    },
+    "hard_gates_total": 172626950,
+    "easy_gates_total": 21006536,
+    "skip_after": 93
+  },
+  {
+    "target_n_buses": 94,
+    "num_active_variables": 278,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 172707650,
+      "1q": 172707650,
+      "2q_easy": 21060558,
+      "2q_hard": 389200,
+      "2q": 21449758,
+      "other": 0,
+      "easy_total": 21060558,
+      "hard_total": 173096850,
+      "total": 194157408,
+      "t_count": 173096850
+    },
+    "hard_gates_total": 173096850,
+    "easy_gates_total": 21060558
+  },
+  {
+    "target_n_buses": 96,
+    "num_active_variables": 282,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 174010850,
+      "1q": 174010850,
+      "2q_easy": 21213872,
+      "2q_hard": 394800,
+      "2q": 21608672,
+      "other": 0,
+      "easy_total": 21213872,
+      "hard_total": 174405650,
+      "total": 195619522,
+      "t_count": 174405650
+    },
+    "hard_gates_total": 174405650,
+    "easy_gates_total": 21213872,
+    "skip_after": 96
+  },
+  {
+    "target_n_buses": 98,
+    "num_active_variables": 286,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 175314050,
+      "1q": 175314050,
+      "2q_easy": 21367186,
+      "2q_hard": 400400,
+      "2q": 21767586,
+      "other": 0,
+      "easy_total": 21367186,
+      "hard_total": 175714450,
+      "total": 197081636,
+      "t_count": 175714450
+    },
+    "hard_gates_total": 175714450,
+    "easy_gates_total": 21367186,
+    "skip_after": 98
+  },
+  {
+    "target_n_buses": 101,
+    "num_active_variables": 292,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 178929350,
+      "1q": 178929350,
+      "2q_easy": 21800872,
+      "2q_hard": 408800,
+      "2q": 22209672,
+      "other": 0,
+      "easy_total": 21800872,
+      "hard_total": 179338150,
+      "total": 201139022,
+      "t_count": 179338150
+    },
+    "hard_gates_total": 179338150,
+    "easy_gates_total": 21800872,
+    "skip_after": 101
+  },
+  {
+    "target_n_buses": 102,
+    "num_active_variables": 294,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 179765450,
+      "1q": 179765450,
+      "2q_easy": 21900164,
+      "2q_hard": 411600,
+      "2q": 22311764,
+      "other": 0,
+      "easy_total": 21900164,
+      "hard_total": 180177050,
+      "total": 202077214,
+      "t_count": 180177050
+    },
+    "hard_gates_total": 180177050,
+    "easy_gates_total": 21900164
+  },
+  {
+    "target_n_buses": 104,
+    "num_active_variables": 298,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 184112900,
+      "1q": 184112900,
+      "2q_easy": 22424188,
+      "2q_hard": 417200,
+      "2q": 22841388,
+      "other": 0,
+      "easy_total": 22424188,
+      "hard_total": 184530100,
+      "total": 206954288,
+      "t_count": 184530100
+    },
+    "hard_gates_total": 184530100,
+    "easy_gates_total": 22424188,
+    "skip_after": 104
+  },
+  {
+    "target_n_buses": 105,
+    "num_active_variables": 300,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 184949000,
+      "1q": 184949000,
+      "2q_easy": 22523480,
+      "2q_hard": 420000,
+      "2q": 22943480,
+      "other": 0,
+      "easy_total": 22523480,
+      "hard_total": 185369000,
+      "total": 207892480,
+      "t_count": 185369000
+    },
+    "hard_gates_total": 185369000,
+    "easy_gates_total": 22523480
+  },
+  {
+    "target_n_buses": 108,
+    "num_active_variables": 306,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 191606300,
+      "1q": 191606300,
+      "2q_easy": 23337506,
+      "2q_hard": 428400,
+      "2q": 23765906,
+      "other": 0,
+      "easy_total": 23337506,
+      "hard_total": 192034700,
+      "total": 215372206,
+      "t_count": 192034700
+    },
+    "hard_gates_total": 192034700,
+    "easy_gates_total": 23337506,
+    "skip_after": 108
+  },
+  {
+    "target_n_buses": 113,
+    "num_active_variables": 316,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 198090800,
+      "1q": 198090800,
+      "2q_easy": 24123766,
+      "2q_hard": 442400,
+      "2q": 24566166,
+      "other": 0,
+      "easy_total": 24123766,
+      "hard_total": 198533200,
+      "total": 222656966,
+      "t_count": 198533200
+    },
+    "hard_gates_total": 198533200,
+    "easy_gates_total": 24123766,
+    "skip_after": 113
+  },
+  {
+    "target_n_buses": 132,
+    "num_active_variables": 388,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 280934650,
+      "1q": 280934650,
+      "2q_easy": 34261868,
+      "2q_hard": 543200,
+      "2q": 34805068,
+      "other": 0,
+      "easy_total": 34261868,
+      "hard_total": 281477850,
+      "total": 315739718,
+      "t_count": 281477850
+    },
+    "hard_gates_total": 281477850,
+    "easy_gates_total": 34261868,
+    "skip_after": 132
+  },
+  {
+    "target_n_buses": 133,
+    "num_active_variables": 390,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 281770750,
+      "1q": 281770750,
+      "2q_easy": 34361160,
+      "2q_hard": 546000,
+      "2q": 34907160,
+      "other": 0,
+      "easy_total": 34361160,
+      "hard_total": 282316750,
+      "total": 316677910,
+      "t_count": 282316750
+    },
+    "hard_gates_total": 282316750,
+    "easy_gates_total": 34361160
+  },
+  {
+    "target_n_buses": 138,
+    "num_active_variables": 400,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 289823500,
+      "1q": 289823500,
+      "2q_easy": 35337050,
+      "2q_hard": 560000,
+      "2q": 35897050,
+      "other": 0,
+      "easy_total": 35337050,
+      "hard_total": 290383500,
+      "total": 325720550,
+      "t_count": 290383500
+    },
+    "hard_gates_total": 290383500,
+    "easy_gates_total": 35337050,
+    "skip_after": 138
+  },
+  {
+    "target_n_buses": 140,
+    "num_active_variables": 404,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 291126700,
+      "1q": 291126700,
+      "2q_easy": 35490364,
+      "2q_hard": 565600,
+      "2q": 36055964,
+      "other": 0,
+      "easy_total": 35490364,
+      "hard_total": 291692300,
+      "total": 327182664,
+      "t_count": 291692300
+    },
+    "hard_gates_total": 291692300,
+    "easy_gates_total": 35490364,
+    "skip_after": 140
+  },
+  {
+    "target_n_buses": 142,
+    "num_active_variables": 408,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 292429900,
+      "1q": 292429900,
+      "2q_easy": 35643678,
+      "2q_hard": 571200,
+      "2q": 36214878,
+      "other": 0,
+      "easy_total": 35643678,
+      "hard_total": 293001100,
+      "total": 328644778,
+      "t_count": 293001100
+    },
+    "hard_gates_total": 293001100,
+    "easy_gates_total": 35643678,
+    "skip_after": 142
+  },
+  {
+    "target_n_buses": 143,
+    "num_active_variables": 410,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 293266000,
+      "1q": 293266000,
+      "2q_easy": 35742970,
+      "2q_hard": 574000,
+      "2q": 36316970,
+      "other": 0,
+      "easy_total": 35742970,
+      "hard_total": 293840000,
+      "total": 329582970,
+      "t_count": 293840000
+    },
+    "hard_gates_total": 293840000,
+    "easy_gates_total": 35742970
+  },
+  {
+    "target_n_buses": 144,
+    "num_active_variables": 412,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 294378850,
+      "1q": 294378850,
+      "2q_easy": 35878982,
+      "2q_hard": 576800,
+      "2q": 36455782,
+      "other": 0,
+      "easy_total": 35878982,
+      "hard_total": 294955650,
+      "total": 330834632,
+      "t_count": 294955650
+    },
+    "hard_gates_total": 294955650,
+    "easy_gates_total": 35878982
+  },
+  {
+    "target_n_buses": 145,
+    "num_active_variables": 414,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 294845950,
+      "1q": 294845950,
+      "2q_easy": 35933004,
+      "2q_hard": 579600,
+      "2q": 36512604,
+      "other": 0,
+      "easy_total": 35933004,
+      "hard_total": 295425550,
+      "total": 331358554,
+      "t_count": 295425550
+    },
+    "hard_gates_total": 295425550,
+    "easy_gates_total": 35933004
+  },
+  {
+    "target_n_buses": 148,
+    "num_active_variables": 420,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 297354250,
+      "1q": 297354250,
+      "2q_easy": 36230880,
+      "2q_hard": 588000,
+      "2q": 36818880,
+      "other": 0,
+      "easy_total": 36230880,
+      "hard_total": 297942250,
+      "total": 334173130,
+      "t_count": 297942250
+    },
+    "hard_gates_total": 297942250,
+    "easy_gates_total": 36230880,
+    "skip_after": 148
+  },
+  {
+    "target_n_buses": 150,
+    "num_active_variables": 424,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 301886200,
+      "1q": 301886200,
+      "2q_easy": 36783074,
+      "2q_hard": 593600,
+      "2q": 37376674,
+      "other": 0,
+      "easy_total": 36783074,
+      "hard_total": 302479800,
+      "total": 339262874,
+      "t_count": 302479800
+    },
+    "hard_gates_total": 302479800,
+    "easy_gates_total": 36783074,
+    "skip_after": 150
+  },
+  {
+    "target_n_buses": 153,
+    "num_active_variables": 430,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 308914750,
+      "1q": 308914750,
+      "2q_easy": 37632740,
+      "2q_hard": 602000,
+      "2q": 38234740,
+      "other": 0,
+      "easy_total": 37632740,
+      "hard_total": 309516750,
+      "total": 347149490,
+      "t_count": 309516750
+    },
+    "hard_gates_total": 309516750,
+    "easy_gates_total": 37632740,
+    "skip_after": 153
+  },
+  {
+    "target_n_buses": 156,
+    "num_active_variables": 436,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 317419300,
+      "1q": 317419300,
+      "2q_easy": 38674556,
+      "2q_hard": 610400,
+      "2q": 39284956,
+      "other": 0,
+      "easy_total": 38674556,
+      "hard_total": 318029700,
+      "total": 356704256,
+      "t_count": 318029700
+    },
+    "hard_gates_total": 318029700,
+    "easy_gates_total": 38674556,
+    "skip_after": 156
+  },
+  {
+    "target_n_buses": 160,
+    "num_active_variables": 444,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 321501700,
+      "1q": 321501700,
+      "2q_easy": 39162264,
+      "2q_hard": 621600,
+      "2q": 39783864,
+      "other": 0,
+      "easy_total": 39162264,
+      "hard_total": 322123300,
+      "total": 361285564,
+      "t_count": 322123300
+    },
+    "hard_gates_total": 322123300,
+    "easy_gates_total": 39162264,
+    "skip_after": 160
+  },
+  {
+    "target_n_buses": 162,
+    "num_active_variables": 448,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 322804900,
+      "1q": 322804900,
+      "2q_easy": 39315578,
+      "2q_hard": 627200,
+      "2q": 39942778,
+      "other": 0,
+      "easy_total": 39315578,
+      "hard_total": 323432100,
+      "total": 362747678,
+      "t_count": 323432100
+    },
+    "hard_gates_total": 323432100,
+    "easy_gates_total": 39315578,
+    "skip_after": 162
+  },
+  {
+    "target_n_buses": 164,
+    "num_active_variables": 452,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 324108100,
+      "1q": 324108100,
+      "2q_easy": 39468892,
+      "2q_hard": 632800,
+      "2q": 40101692,
+      "other": 0,
+      "easy_total": 39468892,
+      "hard_total": 324740900,
+      "total": 364209792,
+      "t_count": 324740900
+    },
+    "hard_gates_total": 324740900,
+    "easy_gates_total": 39468892,
+    "skip_after": 164
+  },
+  {
+    "target_n_buses": 165,
+    "num_active_variables": 454,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 324575200,
+      "1q": 324575200,
+      "2q_easy": 39522914,
+      "2q_hard": 635600,
+      "2q": 40158514,
+      "other": 0,
+      "easy_total": 39522914,
+      "hard_total": 325210800,
+      "total": 364733714,
+      "t_count": 325210800
+    },
+    "hard_gates_total": 325210800,
+    "easy_gates_total": 39522914
+  },
+  {
+    "target_n_buses": 171,
+    "num_active_variables": 474,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 335283700,
+      "1q": 335283700,
+      "2q_easy": 40825584,
+      "2q_hard": 663600,
+      "2q": 41489184,
+      "other": 0,
+      "easy_total": 40825584,
+      "hard_total": 335947300,
+      "total": 376772884,
+      "t_count": 335947300
+    },
+    "hard_gates_total": 335947300,
+    "easy_gates_total": 40825584,
+    "skip_after": 171
+  },
+  {
+    "target_n_buses": 174,
+    "num_active_variables": 480,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 340006000,
+      "1q": 340006000,
+      "2q_easy": 41395080,
+      "2q_hard": 672000,
+      "2q": 42067080,
+      "other": 0,
+      "easy_total": 41395080,
+      "hard_total": 340678000,
+      "total": 382073080,
+      "t_count": 340678000
+    },
+    "hard_gates_total": 340678000,
+    "easy_gates_total": 41395080,
+    "skip_after": 174
+  },
+  {
+    "target_n_buses": 178,
+    "num_active_variables": 496,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 347928300,
+      "1q": 347928300,
+      "2q_easy": 42363176,
+      "2q_hard": 694400,
+      "2q": 43057576,
+      "other": 0,
+      "easy_total": 42363176,
+      "hard_total": 348622700,
+      "total": 390985876,
+      "t_count": 348622700
+    },
+    "hard_gates_total": 348622700,
+    "easy_gates_total": 42363176,
+    "skip_after": 178
+  },
+  {
+    "target_n_buses": 182,
+    "num_active_variables": 506,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 353060550,
+      "1q": 353060550,
+      "2q_easy": 42989146,
+      "2q_hard": 708400,
+      "2q": 43697546,
+      "other": 0,
+      "easy_total": 42989146,
+      "hard_total": 353768950,
+      "total": 396758096,
+      "t_count": 353768950
+    },
+    "hard_gates_total": 353768950,
+    "easy_gates_total": 42989146,
+    "skip_after": 182
+  },
+  {
+    "target_n_buses": 185,
+    "num_active_variables": 512,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 355568850,
+      "1q": 355568850,
+      "2q_easy": 43287022,
+      "2q_hard": 716800,
+      "2q": 44003822,
+      "other": 0,
+      "easy_total": 43287022,
+      "hard_total": 356285650,
+      "total": 399572672,
+      "t_count": 356285650
+    },
+    "hard_gates_total": 356285650,
+    "easy_gates_total": 43287022,
+    "skip_after": 185
+  },
+  {
+    "target_n_buses": 188,
+    "num_active_variables": 518,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 358077150,
+      "1q": 358077150,
+      "2q_easy": 43584898,
+      "2q_hard": 725200,
+      "2q": 44310098,
+      "other": 0,
+      "easy_total": 43584898,
+      "hard_total": 358802350,
+      "total": 402387248,
+      "t_count": 358802350
+    },
+    "hard_gates_total": 358802350,
+    "easy_gates_total": 43584898,
+    "skip_after": 188
+  },
+  {
+    "target_n_buses": 190,
+    "num_active_variables": 522,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 359380350,
+      "1q": 359380350,
+      "2q_easy": 43738212,
+      "2q_hard": 730800,
+      "2q": 44469012,
+      "other": 0,
+      "easy_total": 43738212,
+      "hard_total": 360111150,
+      "total": 403849362,
+      "t_count": 360111150
+    },
+    "hard_gates_total": 360111150,
+    "easy_gates_total": 43738212,
+    "skip_after": 190
+  },
+  {
+    "target_n_buses": 192,
+    "num_active_variables": 526,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 362713050,
+      "1q": 362713050,
+      "2q_easy": 44134976,
+      "2q_hard": 736400,
+      "2q": 44871376,
+      "other": 0,
+      "easy_total": 44134976,
+      "hard_total": 363449450,
+      "total": 407584426,
+      "t_count": 363449450
+    },
+    "hard_gates_total": 363449450,
+    "easy_gates_total": 44134976,
+    "skip_after": 192
+  },
+  {
+    "target_n_buses": 194,
+    "num_active_variables": 530,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 363872250,
+      "1q": 363872250,
+      "2q_easy": 44269570,
+      "2q_hard": 742000,
+      "2q": 45011570,
+      "other": 0,
+      "easy_total": 44269570,
+      "hard_total": 364614250,
+      "total": 408883820,
+      "t_count": 364614250
+    },
+    "hard_gates_total": 364614250,
+    "easy_gates_total": 44269570,
+    "skip_after": 194
+  },
+  {
+    "target_n_buses": 195,
+    "num_active_variables": 532,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 364708350,
+      "1q": 364708350,
+      "2q_easy": 44368862,
+      "2q_hard": 744800,
+      "2q": 45113662,
+      "other": 0,
+      "easy_total": 44368862,
+      "hard_total": 365453150,
+      "total": 409822012,
+      "t_count": 365453150
+    },
+    "hard_gates_total": 365453150,
+    "easy_gates_total": 44368862
+  },
+  {
+    "target_n_buses": 196,
+    "num_active_variables": 534,
+    "combined_counts": {
+      "1q_easy": 0,
+      "1q_hard": 365175450,
+      "1q": 365175450,
+      "2q_easy": 44422884,
+      "2q_hard": 747600,
+      "2q": 45170484,
+      "other": 0,
+      "easy_total": 44422884,
+      "hard_total": 365923050,
+      "total": 410345934,
+      "t_count": 365923050
+    },
+    "hard_gates_total": 365923050,
+    "easy_gates_total": 44422884
+  }
+]
