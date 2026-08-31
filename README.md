@@ -90,6 +90,7 @@ print(f"Depth reduction over PBC: {pbc.depth() / clifford_reduced.depth():.2f}x"
 ## Further Documentation
 - Python API reference: [docs/python_api.md](docs/python_api.md)
 - C++ CLI guide: [docs/cpp_cli.md](docs/cpp_cli.md)
+- QASM dialect reference: [docs/qasm_dialect.md](docs/qasm_dialect.md) — supported gates, and what goes beyond OpenQASM 2
 
 ## Repository Layout
 - `include/nwqec/` — public headers (analysis, core, parser, passes, gridsynth, tableau)

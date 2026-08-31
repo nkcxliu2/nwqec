@@ -183,11 +183,24 @@ namespace NWQEC
             }
             case Operation::Type::CS:
             {
+                // CS = diag(1,1,1,i), so each phase is pi/4 and the gates are T, not S.
+                // Using S here would give diag(1,1,1,-1) = CZ. Mirror image of CSDG below.
+                result.push_back(Operation(Operation::Type::T, {qubits[0]}, {}));
+                result.push_back(Operation(Operation::Type::CX, {qubits[0], qubits[1]}, {}));
+                result.push_back(Operation(Operation::Type::TDG, {qubits[1]}, {}));
+                result.push_back(Operation(Operation::Type::CX, {qubits[0], qubits[1]}, {}));
+                result.push_back(Operation(Operation::Type::T, {qubits[1]}, {}));
+                break;
+            }
+            case Operation::Type::ECR:
+            {
+                // Echoed cross-resonance, ECR = (IX - XY)/sqrt(2). Both Paulis anticommute,
+                // so the gate is Clifford and costs no T. Exact up to a global phase of
+                // exp(i pi/4), which is not tracked here.
                 result.push_back(Operation(Operation::Type::S, {qubits[0]}, {}));
+                result.push_back(Operation(Operation::Type::SX, {qubits[1]}, {}));
                 result.push_back(Operation(Operation::Type::CX, {qubits[0], qubits[1]}, {}));
-                result.push_back(Operation(Operation::Type::SDG, {qubits[1]}, {}));
-                result.push_back(Operation(Operation::Type::CX, {qubits[0], qubits[1]}, {}));
-                result.push_back(Operation(Operation::Type::S, {qubits[1]}, {}));
+                result.push_back(Operation(Operation::Type::X, {qubits[0]}, {}));
                 break;
             }
             case Operation::Type::CSDG:
