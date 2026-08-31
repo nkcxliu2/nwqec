@@ -56,6 +56,9 @@ namespace NWQEC
         // Track if circuit contains only Clifford+T gates
         mutable bool is_clifford_t_circuit = true;
 
+        // Track if circuit contains any classically conditioned operation
+        bool has_feedforward_ops = false;
+
         // Basis statistics from last basis_aware_depth calculation
         mutable BasisStatistics basis_stats;
 
@@ -156,7 +159,9 @@ namespace NWQEC
                     mapped_qubits.push_back(actual_qubits[formalIdx]);
                 }
 
-                add_operation(Operation(op.get_type(), mapped_qubits, op.get_parameters(), op.get_bits()));
+                add_operation(Operation(op.get_type(), mapped_qubits, op.get_parameters(), op.get_bits(),
+                                        op.get_pauli_op(), op.get_dagger(), op.get_x_rotation(),
+                                        op.get_condition()));
             }
         }
 
@@ -183,6 +188,19 @@ namespace NWQEC
                     num_bits = b_idx + 1;
                 }
             }
+            // Condition bits are read, not written, but still occupy classical storage
+            // and must be covered by the declared creg.
+            if (operation.is_conditional())
+            {
+                for (size_t b_idx : operation.get_condition()->bits)
+                {
+                    if (b_idx >= num_bits)
+                    {
+                        num_bits = b_idx + 1;
+                    }
+                }
+                has_feedforward_ops = true;
+            }
 
             // Update Clifford+T tracking
             if (is_clifford_t_circuit && !is_clifford_t_operation(operation.get_type()))
@@ -191,6 +209,33 @@ namespace NWQEC
             }
 
             operations.push_back(std::move(operation));
+        }
+
+        /**
+         * @brief Apply a classical condition to every operation from begin_idx onward.
+         *
+         * Used by the parser to guard the body of an `if` statement after it has been
+         * parsed through the ordinary gate path, and by lowering passes that emit a
+         * conditional gadget. Throws if any operation in the range cannot be guarded.
+         */
+        void set_condition_on_operations(size_t begin_idx, const ClassicalCondition &condition)
+        {
+            condition.validate();
+            for (size_t i = begin_idx; i < operations.size(); ++i)
+            {
+                operations[i].set_condition(condition);
+            }
+            if (begin_idx < operations.size())
+            {
+                has_feedforward_ops = true;
+                for (size_t b_idx : condition.bits)
+                {
+                    if (b_idx >= num_bits)
+                    {
+                        num_bits = b_idx + 1;
+                    }
+                }
+            }
         }
 
         // Allow derived classes to set the full list of operations.
@@ -202,6 +247,7 @@ namespace NWQEC
             num_qubits = 0;
             num_bits = 0;
             is_clifford_t_circuit = true;
+            has_feedforward_ops = false;
 
             for (const auto &op : operations)
             {
@@ -218,6 +264,17 @@ namespace NWQEC
                     {
                         num_bits = b_idx + 1;
                     }
+                }
+                if (op.is_conditional())
+                {
+                    for (size_t b_idx : op.get_condition()->bits)
+                    {
+                        if (b_idx >= num_bits)
+                        {
+                            num_bits = b_idx + 1;
+                        }
+                    }
+                    has_feedforward_ops = true;
                 }
 
                 // Check Clifford+T status
@@ -266,6 +323,22 @@ namespace NWQEC
 
         // Check if the circuit contains only Clifford+T gates
         bool is_clifford_t() const { return is_clifford_t_circuit; }
+
+        // ---- dynamic-circuit queries ----
+        // True if any operation is classically conditioned (measurement feed-forward).
+        bool has_feedforward() const { return has_feedforward_ops; }
+
+        bool has_measurement() const
+        {
+            for (const auto &op : operations)
+            {
+                if (op.is_measurement())
+                    return true;
+            }
+            return false;
+        }
+
+        bool is_dynamic() const { return has_feedforward_ops || has_measurement(); }
 
         // Get count for a specific operation type
         size_t get_operation_count(Operation::Type type) const
@@ -545,12 +618,64 @@ namespace NWQEC
             return op_counts;
         }
 
+        /**
+         * @brief Render a classical condition as an OpenQASM 3 `if` header.
+         *
+         * A single-bit condition prints as `if (c[3] == 1)`. A condition covering the
+         * whole flattened register prints as `if (c == 5)`. The indexed form is always
+         * correct against the flattened register, which is why it is the default; the
+         * whole-register form is only used when the condition genuinely spans every bit.
+         */
+        std::string condition_to_string(const ClassicalCondition &cond) const
+        {
+            if (cond.bits.size() == 1)
+            {
+                return "if (c[" + std::to_string(cond.bits[0]) + "] == " +
+                       std::to_string(cond.value) + ")";
+            }
+
+            bool spans_register = (cond.bits.size() == num_bits);
+            if (spans_register)
+            {
+                for (size_t i = 0; i < cond.bits.size(); ++i)
+                {
+                    if (cond.bits[i] != i)
+                    {
+                        spans_register = false;
+                        break;
+                    }
+                }
+            }
+            if (spans_register)
+            {
+                return "if (c == " + std::to_string(cond.value) + ")";
+            }
+
+            // General case: conjunction over individually indexed bits.
+            std::string expr = "if (";
+            for (size_t i = 0; i < cond.bits.size(); ++i)
+            {
+                if (i > 0)
+                    expr += " && ";
+                expr += "c[" + std::to_string(cond.bits[i]) + "] == " +
+                        std::to_string((cond.value >> i) & 1ULL);
+            }
+            return expr + ")";
+        }
+
         // Print the circuit
         void print(std::ostream &os) const
         {
-            // Print header
+            // Print header. The header and include line are identical in both modes;
+            // only conditional statements deviate from OpenQASM 2 (see plan section 10.3).
             os << "OPENQASM 2.0;\n";
-            os << "include \"qelib1.inc\";\n\n";
+            os << "include \"qelib1.inc\";\n";
+            if (has_feedforward_ops)
+            {
+                os << "// NWQEC dynamic dialect: conditional statements use OpenQASM 3 "
+                      "if-syntax.\n";
+            }
+            os << "\n";
 
             // Print registers
             if (num_qubits > 0)
@@ -563,13 +688,56 @@ namespace NWQEC
             }
             os << "\n";
 
-            // Print operations
-            for (const auto &op : operations)
+            // Print operations. Adjacent operations sharing the identical condition are
+            // emitted as a single block, so one logical conditional gate stays one
+            // statement even after it is decomposed into many basis gates.
+            for (size_t i = 0; i < operations.size();)
             {
-                op.print(os);
-                os << "\n";
+                if (!operations[i].is_conditional())
+                {
+                    operations[i].print(os);
+                    os << "\n";
+                    ++i;
+                    continue;
+                }
+
+                const ClassicalCondition &cond = *operations[i].get_condition();
+                size_t j = i + 1;
+                while (j < operations.size() && operations[j].is_conditional() &&
+                       *operations[j].get_condition() == cond)
+                {
+                    ++j;
+                }
+
+                os << condition_to_string(cond) << " { ";
+                for (size_t k = i; k < j; ++k)
+                {
+                    if (k > i)
+                        os << " ";
+                    operations[k].print(os);
+                }
+                os << " }\n";
+                i = j;
             }
         }
     };
+
+    /**
+     * @brief Reject a circuit carrying classical feed-forward.
+     *
+     * Used by passes that operate only on unitary regions. Failing loudly is
+     * deliberate: silently skipping a conditional operation would change the
+     * circuit's semantics without any diagnostic.
+     */
+    inline void require_no_feedforward(const Circuit &circuit, const char *pass_name)
+    {
+        if (circuit.has_feedforward())
+        {
+            throw std::runtime_error(
+                std::string(pass_name) +
+                " does not support classically conditioned operations; "
+                "this pipeline operates on unitary regions only.");
+        }
+    }
 
 } // namespace NWQEC

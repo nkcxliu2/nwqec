@@ -1,0 +1,476 @@
+{
+  "basic_clifford_t__counts_api": {
+    "cx": 2,
+    "h": 2,
+    "s": 1,
+    "sdg": 1,
+    "t": 1,
+    "tdg": 1,
+    "x": 1,
+    "y": 1,
+    "z": 1
+  },
+  "basic_clifford_t__to_clifford_reduction": {
+    "counts": {
+      "cx": 2,
+      "h": 2,
+      "sdg": 1,
+      "t": 2,
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "depth": 5,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "basic_clifford_t__to_clifford_t": {
+    "counts": {
+      "cx": 2,
+      "h": 2,
+      "s": 1,
+      "sdg": 1,
+      "t": 1,
+      "tdg": 1,
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "depth": 5,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "basic_clifford_t__to_clifford_t_keepccx": {
+    "counts": {
+      "cx": 2,
+      "h": 2,
+      "s": 1,
+      "sdg": 1,
+      "t": 1,
+      "tdg": 1,
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "depth": 5,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "basic_clifford_t__to_pbc": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 2
+    },
+    "depth": 2,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "basic_clifford_t__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 2
+    },
+    "depth": 3,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "measure_reset_barrier__counts_api": {
+    "barrier": 1,
+    "cx": 1,
+    "h": 1,
+    "measure": 3,
+    "reset": 1,
+    "t": 1
+  },
+  "measure_reset_barrier__to_clifford_reduction": {
+    "counts": {
+      "barrier": 1,
+      "cx": 1,
+      "h": 1,
+      "measure": 3,
+      "reset": 1,
+      "t": 1
+    },
+    "depth": 6,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "measure_reset_barrier__to_clifford_t": {
+    "counts": {
+      "barrier": 1,
+      "cx": 1,
+      "h": 1,
+      "measure": 3,
+      "reset": 1,
+      "t": 1
+    },
+    "depth": 6,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "measure_reset_barrier__to_clifford_t_keepccx": {
+    "counts": {
+      "barrier": 1,
+      "cx": 1,
+      "h": 1,
+      "measure": 3,
+      "reset": 1,
+      "t": 1
+    },
+    "depth": 6,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "measure_reset_barrier__to_pbc": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 1
+    },
+    "depth": 3,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "measure_reset_barrier__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 1
+    },
+    "depth": 3,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "mixed_full__counts_api": {
+    "cx": 16,
+    "h": 105,
+    "s": 46,
+    "sx": 1,
+    "sxdg": 1,
+    "t": 107,
+    "tdg": 6
+  },
+  "mixed_full__to_clifford_reduction": {
+    "counts": {
+      "cx": 16,
+      "h": 5,
+      "rx(-pi/4)": 30,
+      "rx(pi/4)": 19,
+      "sx": 1,
+      "sxdg": 1,
+      "t": 24,
+      "tdg": 40,
+      "x": 31,
+      "z": 35
+    },
+    "depth": 176,
+    "is_clifford_t": true,
+    "num_qubits": 5
+  },
+  "mixed_full__to_clifford_t": {
+    "counts": {
+      "cx": 16,
+      "h": 103,
+      "s": 66,
+      "sx": 1,
+      "sxdg": 1,
+      "t": 107,
+      "tdg": 6,
+      "x": 1
+    },
+    "depth": 275,
+    "is_clifford_t": true,
+    "num_qubits": 5
+  },
+  "mixed_full__to_clifford_t_keepccx": {
+    "counts": {
+      "ccx": 2,
+      "cx": 4,
+      "h": 101,
+      "s": 48,
+      "sx": 1,
+      "sxdg": 1,
+      "t": 99
+    },
+    "depth": 250,
+    "is_clifford_t": false,
+    "num_qubits": 5
+  },
+  "mixed_full__to_pbc": {
+    "counts": {
+      "m_pauli": 5,
+      "t_pauli": 113
+    },
+    "depth": 105,
+    "is_clifford_t": true,
+    "num_qubits": 5
+  },
+  "mixed_full__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 5,
+      "t_pauli": 113
+    },
+    "depth": 105,
+    "is_clifford_t": true,
+    "num_qubits": 5
+  },
+  "qft_n18__counts_api": {
+    "cx": 306,
+    "h": 37929,
+    "s": 19830,
+    "t": 37708,
+    "tdg": 17,
+    "x": 154
+  },
+  "qft_n18__to_clifford_reduction": {
+    "counts": {
+      "cx": 306,
+      "h": 255,
+      "rx(-pi/4)": 9593,
+      "rx(pi/4)": 9244,
+      "s": 143,
+      "sx": 138,
+      "t": 9150,
+      "tdg": 9738,
+      "x": 9715,
+      "z": 9963
+    },
+    "depth": 9856,
+    "is_clifford_t": true,
+    "num_qubits": 18
+  },
+  "qft_n18__to_clifford_t": {
+    "counts": {
+      "cx": 306,
+      "h": 37929,
+      "s": 19598,
+      "t": 37708,
+      "tdg": 17,
+      "x": 204
+    },
+    "depth": 16219,
+    "is_clifford_t": true,
+    "num_qubits": 18
+  },
+  "qft_n18__to_clifford_t_keepccx": {
+    "counts": {
+      "cx": 306,
+      "h": 37929,
+      "s": 19554,
+      "t": 37708,
+      "tdg": 17,
+      "x": 180
+    },
+    "depth": 16242,
+    "is_clifford_t": true,
+    "num_qubits": 18
+  },
+  "qft_n18__to_pbc": {
+    "counts": {
+      "m_pauli": 18,
+      "t_pauli": 37725
+    },
+    "depth": 33487,
+    "is_clifford_t": true,
+    "num_qubits": 18
+  },
+  "qft_n18__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 18,
+      "t_pauli": 37535
+    },
+    "depth": 32812,
+    "is_clifford_t": true,
+    "num_qubits": 18
+  },
+  "rotations__counts_api": {
+    "cx": 1,
+    "h": 908,
+    "s": 454,
+    "sdg": 1,
+    "sx": 4,
+    "t": 898,
+    "x": 3,
+    "z": 1
+  },
+  "rotations__to_clifford_reduction": {
+    "counts": {
+      "cx": 1,
+      "h": 2,
+      "rx(-pi/4)": 213,
+      "rx(pi/4)": 236,
+      "s": 8,
+      "sdg": 1,
+      "sx": 5,
+      "t": 222,
+      "tdg": 225,
+      "x": 217,
+      "z": 231
+    },
+    "depth": 772,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "rotations__to_clifford_t": {
+    "counts": {
+      "cx": 1,
+      "h": 906,
+      "s": 461,
+      "sdg": 1,
+      "sx": 4,
+      "t": 898,
+      "x": 3,
+      "z": 1
+    },
+    "depth": 1284,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "rotations__to_clifford_t_keepccx": {
+    "counts": {
+      "cx": 1,
+      "h": 908,
+      "s": 445,
+      "sdg": 1,
+      "sx": 4,
+      "t": 898,
+      "x": 5,
+      "z": 1
+    },
+    "depth": 1265,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "rotations__to_pbc": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 898
+    },
+    "depth": 503,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "rotations__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 896
+    },
+    "depth": 501,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "three_qubit_gates__counts_api": {
+    "cx": 24,
+    "h": 12,
+    "t": 14,
+    "tdg": 11
+  },
+  "three_qubit_gates__to_clifford_reduction": {
+    "counts": {
+      "cx": 24,
+      "h": 12,
+      "rx(pi/4)": 1,
+      "t": 13,
+      "tdg": 11
+    },
+    "depth": 45,
+    "is_clifford_t": true,
+    "num_qubits": 4
+  },
+  "three_qubit_gates__to_clifford_t": {
+    "counts": {
+      "cx": 24,
+      "h": 12,
+      "t": 14,
+      "tdg": 11
+    },
+    "depth": 45,
+    "is_clifford_t": true,
+    "num_qubits": 4
+  },
+  "three_qubit_gates__to_clifford_t_keepccx": {
+    "counts": {
+      "ccx": 2,
+      "cx": 12,
+      "h": 8,
+      "t": 6,
+      "tdg": 5
+    },
+    "depth": 26,
+    "is_clifford_t": false,
+    "num_qubits": 4
+  },
+  "three_qubit_gates__to_pbc": {
+    "counts": {
+      "m_pauli": 4,
+      "t_pauli": 25
+    },
+    "depth": 20,
+    "is_clifford_t": true,
+    "num_qubits": 4
+  },
+  "three_qubit_gates__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 4,
+      "t_pauli": 21
+    },
+    "depth": 17,
+    "is_clifford_t": true,
+    "num_qubits": 4
+  },
+  "user_defined_gate__counts_api": {
+    "cx": 8,
+    "h": 5,
+    "t": 6,
+    "tdg": 3
+  },
+  "user_defined_gate__to_clifford_reduction": {
+    "counts": {
+      "cx": 8,
+      "h": 3,
+      "t": 6,
+      "tdg": 3
+    },
+    "depth": 14,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "user_defined_gate__to_clifford_t": {
+    "counts": {
+      "cx": 8,
+      "h": 3,
+      "t": 6,
+      "tdg": 3
+    },
+    "depth": 14,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "user_defined_gate__to_clifford_t_keepccx": {
+    "counts": {
+      "ccx": 1,
+      "cx": 2,
+      "h": 1,
+      "t": 2
+    },
+    "depth": 5,
+    "is_clifford_t": false,
+    "num_qubits": 3
+  },
+  "user_defined_gate__to_pbc": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 9
+    },
+    "depth": 10,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  },
+  "user_defined_gate__to_pbc_opt": {
+    "counts": {
+      "m_pauli": 3,
+      "t_pauli": 5
+    },
+    "depth": 6,
+    "is_clifford_t": true,
+    "num_qubits": 3
+  }
+}

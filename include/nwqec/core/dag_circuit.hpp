@@ -15,10 +15,13 @@ namespace NWQEC
     // A struct to hold the predecessors and successors of an operation that contains the qubit index and the operation index
     struct OperationDependency
     {
-        size_t qubit; // The qubit index this operation depends on
-        size_t node;  // The operation index that this operation depends on
+        size_t qubit;         // Qubit index, or classical bit index when is_classical
+        size_t node;          // The operation index that this operation depends on
+        bool is_classical;    // True for a measurement -> conditional-operation edge
 
-        OperationDependency(size_t q, size_t n) : qubit(q), node(n) {}
+        OperationDependency(size_t q, size_t n) : qubit(q), node(n), is_classical(false) {}
+        OperationDependency(size_t q, size_t n, bool classical)
+            : qubit(q), node(n), is_classical(classical) {}
     };
 
     class DAGCircuit : public Circuit
@@ -48,6 +51,7 @@ namespace NWQEC
                 successors = dag_circuit.successors;
                 predecessors = dag_circuit.predecessors;
                 last_op_on_qubit = dag_circuit.last_op_on_qubit;
+                last_writer_of_bit = dag_circuit.last_writer_of_bit;
             }
             else
             {
@@ -64,6 +68,13 @@ namespace NWQEC
             // New entries for newly added qubits are initialized to SIZE_MAX.
             // Existing entries for older qubits retain their last_op_idx.
             last_op_on_qubit.resize(get_num_qubits(), std::numeric_limits<size_t>::max());
+        }
+
+        // Override add_creg to initialize/resize last_writer_of_bit
+        void add_creg(const std::string &name, size_t size) override
+        {
+            Circuit::add_creg(name, size);
+            last_writer_of_bit.resize(get_num_bits(), std::numeric_limits<size_t>::max());
         }
 
         // Override add_operation to build/update the DAG
@@ -124,6 +135,48 @@ namespace NWQEC
                 }
                 // Update this qubit to now be last touched by the new operation
                 last_op_on_qubit[qubit_idx] = new_op_idx;
+            }
+
+            // Classical feed-forward: a conditional operation reads its condition bits and
+            // must not be scheduled before the measurement that wrote them.
+            if (operation.is_conditional())
+            {
+                for (size_t bit_idx : operation.get_condition()->bits)
+                {
+                    if (bit_idx >= get_num_bits())
+                    {
+                        throw std::out_of_range(
+                            "DAGCircuit::add_operation: condition bit " + std::to_string(bit_idx) +
+                            " (in op " + operation.get_type_name() + ")" +
+                            " is out of range for declared classical bits (" +
+                            std::to_string(get_num_bits()) +
+                            "). Ensure cregs cover all condition bits before adding operations.");
+                    }
+                    if (bit_idx >= last_writer_of_bit.size())
+                    {
+                        last_writer_of_bit.resize(get_num_bits(), std::numeric_limits<size_t>::max());
+                    }
+                    size_t writer = last_writer_of_bit[bit_idx];
+                    if (writer != std::numeric_limits<size_t>::max())
+                    {
+                        successors[writer].emplace_back(bit_idx, new_op_idx, true);
+                        predecessors[new_op_idx].emplace_back(bit_idx, writer, true);
+                    }
+                }
+            }
+
+            // A measurement writes its destination bits.
+            if (operation.is_measurement())
+            {
+                for (size_t bit_idx : operation.get_bits())
+                {
+                    if (bit_idx >= last_writer_of_bit.size())
+                    {
+                        last_writer_of_bit.resize(std::max(get_num_bits(), bit_idx + 1),
+                                                  std::numeric_limits<size_t>::max());
+                    }
+                    last_writer_of_bit[bit_idx] = new_op_idx;
+                }
             }
 
             // Add the operation to the parent class's storage
@@ -192,6 +245,14 @@ namespace NWQEC
             else
             {
                 last_op_on_qubit.clear();
+            }
+            if (get_num_bits() > 0)
+            {
+                last_writer_of_bit.assign(get_num_bits(), std::numeric_limits<size_t>::max());
+            }
+            else
+            {
+                last_writer_of_bit.clear();
             }
         }
 
@@ -285,6 +346,7 @@ namespace NWQEC
 
         // Tracks the last operation index that affected each qubit (global qubit index to op index)
         std::vector<size_t> last_op_on_qubit;
+        std::vector<size_t> last_writer_of_bit;
 
         /**
          * @brief Write the DAG structure to a DOT file for visualization

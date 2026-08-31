@@ -9,6 +9,10 @@ namespace NWQEC {
  * @brief Enumeration of available transpilation passes
  */
 enum class PassType {
+    // Semantic lowering (runs before generic decomposition)
+    MCX_LOWERING,           // Choose how each MCX is realized (clean-ancilla strategies)
+    CCX_LOWERING,           // Choose how each CCX is realized (7T, Jones 4T, preserve)
+
     // Basic decomposition and cleanup
     DECOMPOSE,              // Decompose gates to basic gate set
     REMOVE_TRIVIAL_RZ,      // Remove RZ gates with zero or trivial angles
@@ -31,6 +35,8 @@ enum class PassType {
  */
 inline std::string pass_type_to_string(PassType type) {
     switch (type) {
+        case PassType::MCX_LOWERING:        return "MCX_LOWERING";
+        case PassType::CCX_LOWERING:        return "CCX_LOWERING";
         case PassType::DECOMPOSE:           return "DECOMPOSE";
         case PassType::REMOVE_TRIVIAL_RZ:   return "REMOVE_TRIVIAL_RZ";
         case PassType::GATE_FUSION:         return "GATE_FUSION";

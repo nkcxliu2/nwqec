@@ -53,8 +53,14 @@ namespace NWQEC
                 }
                 else if (auto decomposed_ops = decompose_gate(operation); !decomposed_ops.empty())
                 {
-                    for (const auto &decomposed_op : decomposed_ops)
+                    // A conditional gate decomposes into a sequence that must execute
+                    // under the same guard, so every emitted operation inherits it.
+                    for (auto &decomposed_op : decomposed_ops)
                     {
+                        if (operation.is_conditional())
+                        {
+                            decomposed_op.set_condition(*operation.get_condition());
+                        }
                         new_circuit.add_operation(decomposed_op);
                     }
                     circuit_modified = true;

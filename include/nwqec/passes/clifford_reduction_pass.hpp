@@ -164,7 +164,8 @@ namespace NWQEC
             return op.get_qubits().size() == 1 &&
                    op.get_type() != Operation::Type::MEASURE &&
                    op.get_type() != Operation::Type::RESET &&
-                   op.get_type() != Operation::Type::BARRIER;
+                   op.get_type() != Operation::Type::BARRIER &&
+                   !op.is_conditional();
         }
 
         // Check if two gates can cancel each other

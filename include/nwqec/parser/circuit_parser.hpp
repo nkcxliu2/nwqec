@@ -530,7 +530,8 @@ namespace NWQEC
             }
             if (match(TokenType::IF))
             {
-                throw ParseError("Conditional statements not yet supported in circuit flattening", previous().line, previous().column);
+                if_statement();
+                return;
             }
             if (match(TokenType::LBRACE))
             {
@@ -548,6 +549,84 @@ namespace NWQEC
             }
 
             gate_statement();
+        }
+
+        /**
+         * @brief Parse a classically conditioned statement.
+         *
+         * Accepts the OpenQASM 2 whole-register form `if (c == k) <stmt>` and the
+         * OpenQASM 3 indexed-bit form `if (c[3] == 1) <stmt>`, with either a single
+         * guarded statement or a braced block. The body is parsed through the ordinary
+         * gate path and the condition is applied to everything it produced, so a guarded
+         * user-defined gate expands correctly.
+         */
+        void if_statement()
+        {
+            Token if_token = previous();
+            consume(TokenType::LPAREN, "Expected '(' after 'if'.");
+            Operand reg = parse_operand(/*allow_index=*/true);
+            consume(TokenType::EQUALS, "Expected '==' in conditional expression.");
+            Token value_token = consume(TokenType::INTEGER, "Expected integer after '==' in conditional expression.");
+            consume(TokenType::RPAREN, "Expected ')' after conditional expression.");
+
+            std::vector<size_t> bits = resolve_classical_operand(reg);
+            if (bits.empty())
+            {
+                throw ParseError("Conditional expression references an empty classical register.",
+                                 if_token.line, if_token.column);
+            }
+            if (bits.size() > ClassicalCondition::MAX_BITS)
+            {
+                throw ParseError("Conditional expression spans more than 64 classical bits.",
+                                 if_token.line, if_token.column);
+            }
+
+            unsigned long long raw = 0;
+            const char *vbegin = value_token.lexeme.data();
+            const char *vend = vbegin + value_token.lexeme.size();
+            auto conv = std::from_chars(vbegin, vend, raw);
+            if (conv.ec != std::errc() || conv.ptr != vend)
+            {
+                throw ParseError("Invalid conditional comparison value: " + to_string(value_token.lexeme) + ".",
+                                 value_token.line, value_token.column);
+            }
+            if (bits.size() < ClassicalCondition::MAX_BITS && raw >= (1ULL << bits.size()))
+            {
+                throw ParseError("Conditional comparison value " + to_string(value_token.lexeme) +
+                                     " does not fit in the " + std::to_string(bits.size()) + "-bit condition.",
+                                 value_token.line, value_token.column);
+            }
+
+            if (check(TokenType::MEASURE) || check(TokenType::RESET) ||
+                check(TokenType::BARRIER) || check(TokenType::IF))
+            {
+                throw ParseError("Conditional measure, reset, barrier, and nested if are not supported.",
+                                 peek().line, peek().column);
+            }
+
+            size_t first_op = circuit.get_operations().size();
+            if (match(TokenType::LBRACE))
+            {
+                while (!check(TokenType::RBRACE) && !is_at_end())
+                {
+                    statement();
+                }
+                consume(TokenType::RBRACE, "Expected '}' after conditional block.");
+            }
+            else
+            {
+                statement();
+            }
+
+            try
+            {
+                circuit.set_condition_on_operations(first_op, ClassicalCondition(bits, static_cast<uint64_t>(raw)));
+            }
+            catch (const std::exception &e)
+            {
+                throw ParseError(std::string("Invalid conditional statement: ") + e.what(),
+                                 if_token.line, if_token.column);
+            }
         }
 
         void measure_statement()

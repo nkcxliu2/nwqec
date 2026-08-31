@@ -25,6 +25,7 @@ namespace NWQEC
 
         bool run(Circuit &circuit) override
         {
+            require_no_feedforward(circuit, "TfusePass");
             num_qubits_ = circuit.get_num_qubits();
 
             const auto &operations = circuit.get_operations();

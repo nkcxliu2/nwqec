@@ -6,6 +6,8 @@
 
 #include "nwqec/passes/clifford_reduction_pass.hpp"
 #include "nwqec/passes/pbc_pass.hpp"
+#include "nwqec/passes/ccx_lowering_pass.hpp"
+#include "nwqec/passes/mcx_lowering_pass.hpp"
 #include "nwqec/passes/decompose_pass.hpp"
 #include "nwqec/passes/remove_trivial_rz_pass.hpp"
 #include "nwqec/passes/synthesize_rz_pass.hpp"
@@ -27,6 +29,8 @@ namespace NWQEC {
  */
 struct PassConfig {
     bool keep_ccx = false;          // Preserve CCX gates during decomposition
+    CCXLoweringOptions ccx_lowering = {};  // How each CCX is realized
+    MCXLoweringOptions mcx_lowering = {};  // How each MCX is realized
     bool keep_cx = false;           // Preserve CX gates in PBC format
     RzErrorPolicy rz_error_policy = DEFAULT_RZ_ERROR_POLICY;
     std::optional<double> rz_error_epsilon = std::nullopt;
@@ -130,6 +134,10 @@ inline std::unique_ptr<Pass> Transpiler::create_pass(PassType type, const PassCo
     switch (type) {
         case PassType::DECOMPOSE:
             return std::make_unique<DecomposePass>(config.keep_ccx);
+        case PassType::MCX_LOWERING:
+            return std::make_unique<MCXLoweringPass>(config.mcx_lowering);
+        case PassType::CCX_LOWERING:
+            return std::make_unique<CCXLoweringPass>(config.ccx_lowering);
         
         case PassType::REMOVE_TRIVIAL_RZ:
             return std::make_unique<RemoveTrivialRzPass>();

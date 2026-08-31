@@ -88,3 +88,14 @@ htmlcov/
 
 # CLion CMake out-of-source builds
 cmake-build-*/
+
+# agentic files
+agent
+agent/
+results/
+data/
+
+# test build
+build-*
+build_*
+

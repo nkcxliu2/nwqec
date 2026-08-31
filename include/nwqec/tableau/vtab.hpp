@@ -209,17 +209,23 @@ namespace NWQEC
             case Operation::Type::H:
                 apply_h(a);
                 break;
+            // The PBC conversion walks the circuit backwards and needs the ADJOINT
+            // conjugation P -> g^dag P g at each step, so that the composition over the
+            // whole walk is C^dag Z C for the circuit-order Clifford product C. The
+            // apply_* helpers below implement the forward map P -> g P g^dag, which is
+            // identical for the self-inverse gates (H, X, Y, Z, CX) but not for S and
+            // SX. Those two pairs are therefore dispatched to each other's helper.
             case Operation::Type::S:
-                apply_s(a);
-                break;
-            case Operation::Type::SDG:
                 apply_sdg(a);
                 break;
+            case Operation::Type::SDG:
+                apply_s(a);
+                break;
             case Operation::Type::SX:
-                apply_sx(a);
+                apply_sxdg(a);
                 break;
             case Operation::Type::SXDG:
-                apply_sxdg(a);
+                apply_sx(a);
                 break;
             case Operation::Type::CX:
                 apply_cx(a, b);

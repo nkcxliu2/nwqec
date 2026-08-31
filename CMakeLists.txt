@@ -380,6 +380,12 @@ if(BUILD_TESTING)
              COMMAND $<TARGET_FILE:gridsynth> pi/4 10)
     add_test(NAME qasm_parser_regression
              COMMAND $<TARGET_FILE:test_qasm_parser>)
+
+    add_executable(test_classical_condition tests/cpp/test_classical_condition.cpp)
+    target_link_libraries(test_classical_condition PRIVATE nwqec_gridsynth)
+    target_compile_options(test_classical_condition PRIVATE ${COMMON_COMPILE_OPTIONS})
+    add_test(NAME classical_condition
+             COMMAND $<TARGET_FILE:test_classical_condition>)
 endif()
 
 # =============================================================================

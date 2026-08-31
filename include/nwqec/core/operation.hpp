@@ -9,7 +9,9 @@
 #include <cmath>
 #include <sstream>
 #include <algorithm>
+#include <optional>
 #include "pauli_op.hpp"
+#include "classical_condition.hpp"
 
 namespace NWQEC
 {
@@ -73,6 +75,8 @@ namespace NWQEC
             CCX,
             CSWAP,
             RCCX,
+            // Multi-controlled X: qubits = {c_0, ..., c_{n-1}, target}
+            MCX,
             // Measurement
             MEASURE,
             // Reset
@@ -94,6 +98,7 @@ namespace NWQEC
         PauliOp pauli_op;               // For T_PAULI, M_PAULI, S_PAULI, and Z_PAULI operations
         bool dagger;                    // Whether this is the dagger (conjugate transpose) of the operation
         bool x_rotation;                // Whether this operation includes x rotation
+        std::optional<ClassicalCondition> condition; // Classical guard; unset means unconditional
 
         std::vector<size_t> active_qubits(const PauliOp &pauli_op) const
         {
@@ -148,14 +153,16 @@ namespace NWQEC
                   std::vector<size_t> bits = {},
                   PauliOp pauli_op = PauliOp(),
                   bool dagger = false,
-                  bool x_rotation = false)
+                  bool x_rotation = false,
+                  std::optional<ClassicalCondition> condition = std::nullopt)
             : type(type),
               qubits(qubits.empty() ? active_qubits(pauli_op) : std::move(qubits)),
               parameters(std::move(parameters)),
               bits(std::move(bits)),
               pauli_op(std::move(pauli_op)),
               dagger(dagger),
-              x_rotation(x_rotation) {}
+              x_rotation(x_rotation),
+              condition(std::move(condition)) {}
 
         Type get_type() const { return type; }
         const std::vector<size_t> &get_qubits() const { return qubits; }
@@ -165,6 +172,41 @@ namespace NWQEC
         std::string get_pauli_string() const { return pauli_op.to_string(); }
         bool get_dagger() const { return dagger; }
         bool get_x_rotation() const { return x_rotation; }
+
+        // ---- classical condition (measurement-conditioned execution) ----
+        bool is_conditional() const { return condition.has_value(); }
+        const std::optional<ClassicalCondition> &get_condition() const { return condition; }
+
+        // Types whose execution may not be classically guarded (see plan section 3.3).
+        static bool is_conditionable(Type t)
+        {
+            return t != Type::MEASURE && t != Type::RESET && t != Type::BARRIER;
+        }
+
+        void set_condition(ClassicalCondition c)
+        {
+            if (!is_conditionable(type))
+            {
+                throw std::invalid_argument("Operation of type '" + get_type_name(type) +
+                                            "' cannot be classically conditioned");
+            }
+            c.validate();
+            condition = std::move(c);
+        }
+
+        void clear_condition() { condition.reset(); }
+
+        Operation with_condition(ClassicalCondition c) const
+        {
+            Operation copy = *this;
+            copy.set_condition(std::move(c));
+            return copy;
+        }
+
+        // ---- dynamic-circuit classification ----
+        bool is_measurement() const { return type == Type::MEASURE || type == Type::M_PAULI; }
+        bool is_reset() const { return type == Type::RESET; }
+        bool is_dynamic() const { return is_measurement() || is_reset() || is_conditional(); }
 
         // Get string representation of the operation type
         std::string get_type_name() const
@@ -289,6 +331,8 @@ namespace NWQEC
                 return "cswap";
             case Type::RCCX:
                 return "rccx";
+            case Type::MCX:
+                return "mcx";
             // Measurement
             case Type::MEASURE:
                 return "measure";
@@ -538,6 +582,11 @@ namespace NWQEC
                 type = Type::RCCX;
                 return true;
             }
+            if (lowercase_name == "mcx")
+            {
+                type = Type::MCX;
+                return true;
+            }
             // Measurement
             if (lowercase_name == "measure")
             {
@@ -694,7 +743,20 @@ namespace NWQEC
             if (type == Type::T_PAULI || type == Type::M_PAULI || type == Type::S_PAULI || type == Type::Z_PAULI)
             {
                 // Special case for T_PAULI, M_PAULI, S_PAULI, and Z_PAULI
-                os << " " << pauli_op.to_string() << ";";
+                os << " " << pauli_op.to_string();
+                // A mid-circuit Pauli measurement writes a classical bit; terminal ones
+                // do not. Printing it is what distinguishes the two on readback.
+                if (type == Type::M_PAULI && !bits.empty())
+                {
+                    os << " -> ";
+                    for (size_t i = 0; i < bits.size(); ++i)
+                    {
+                        os << "c[" << bits[i] << "]";
+                        if (i < bits.size() - 1)
+                            os << ",";
+                    }
+                }
+                os << ";";
                 return;
             }
             

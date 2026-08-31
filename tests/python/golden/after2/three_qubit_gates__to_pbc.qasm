@@ -1,0 +1,34 @@
+OPENQASM 2.0;
+include "qelib1.inc";
+
+qreg q[4];
+
+t_pauli -IXXI;
+t_pauli +XXXI;
+t_pauli +IXII;
+t_pauli -XIXI;
+t_pauli +XIII;
+t_pauli -XXII;
+t_pauli +IIXI;
+t_pauli +IIIX;
+t_pauli -IXIX;
+t_pauli +XXIX;
+t_pauli -XIIX;
+t_pauli +XIYY;
+t_pauli -IIYY;
+t_pauli +IIZZ;
+t_pauli -IIXX;
+t_pauli +XIII;
+t_pauli -XIZZ;
+t_pauli +XIXX;
+t_pauli -XIZX;
+t_pauli +XXZX;
+t_pauli +IIZI;
+t_pauli -XXIX;
+t_pauli +IXII;
+t_pauli -IXZI;
+t_pauli +XIIX;
+m_pauli +XIII;
+m_pauli +IXII;
+m_pauli +IIZI;
+m_pauli +IIIZ;
